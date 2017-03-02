@@ -47,7 +47,7 @@ func check(t *testing.T, err error, a, b string) {
 func Test_Simple(t *testing.T) {
 
 	// Each time there's a new version, this will force an update to this code.
-	check(t, nil, jsonnet.Version(), `v0.8.7`)
+	check(t, nil, jsonnet.Version(), `v0.9.3`)
 
 	vm := jsonnet.Make()
 	vm.TlaVar("color", "purple")
@@ -66,7 +66,7 @@ func Test_Simple(t *testing.T) {
 	check(t, err, x, `"purple"`+"\n")
 	vm.StringOutput(true)
 	x, err = vm.EvaluateSnippet(`test2`, `"whee"`)
-	check(t, err, x, `whee` + "\n")
+	check(t, err, x, `whee`+"\n")
 	vm.StringOutput(false)
 	x, err = vm.EvaluateSnippet(`test3`, `
     local a = import "alien.conf";
